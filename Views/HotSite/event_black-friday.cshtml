@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Black Friday é no Feed!";
+    Layout = "~/Views/Shared/Base/_Layout.cshtml";
+}
+
+
+<div class="featuredProducts">
+    <!-- ~/Views/Shared/Blocks/Product/_FeaturedProducts.cshtml -->
+    @Html.Action("FeaturedProducts", "Product")
+</div>
+
+
+@section Custom_js {
+    <script type="text/javascript">
+    	console.log('Black Friday é no Feed!')
+    </script>
+}
