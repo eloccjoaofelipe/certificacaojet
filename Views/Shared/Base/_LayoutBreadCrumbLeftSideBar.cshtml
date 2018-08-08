@@ -57,11 +57,11 @@
         <!-- ~/Views/Shared/Common/_TopBar.cshtml -->
         @Html.Partial("Common/_TopBar")
 
-        <!-- ~/Views/Shared/Common/_Head.cshtml -->
-        @Html.Partial("Common/_Head")
-
         <!-- ~/Views/Shared/Common/_Menu.cshtml -->
         @Html.Action("Menu", "Home")
+
+        <!-- ~/Views/Shared/Common/_Head.cshtml -->
+        @Html.Partial("Common/_Head")
 
         @RenderSection("breadcrumbs", required: true)
         <div class="row one column">

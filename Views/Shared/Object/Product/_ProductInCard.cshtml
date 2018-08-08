@@ -34,9 +34,9 @@
                 }
             </a>
         }
-        <div class="ui horizontal divider avaliacao">
+        <!-- <div class="ui horizontal divider avaliacao">
             <div class="ui tiny star rating" data-rating="@Model.Rate.Value.ToString().Replace(",", ".")"></div>
-        </div>
+        </div> -->
         
         <div class="info">
 
@@ -77,29 +77,25 @@
                 <!-- Verificar se o produto é conjunto -->
                 @if (Model.HasConjunct)
                 {
-                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Comprar" class="ui labeled icon button primary fluid btn-comprar text uppercase" data-idproduct="@Model.IdProduct" data-name="Model.Name">
-                        <i id="btn-icon-card-Model.IdProduct" class="icon announcement"></i>
+                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Comprar" class="ui labeled button primary fluid btn-comprar text uppercase" data-idproduct="@Model.IdProduct" data-name="Model.Name">
                         Comprar
                     </a>
                 }
                 else if (Model.FlagExhausted || Model.Stock <= 0)
                 {
-                    <a id="btn-comprar-card-@Model.IdProduct" title="Avise-me" class="ui labeled icon button grey fluid avise-card avise-me-modal text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-                        <i id="btn-icon-card-@Model.IdProduct" class="icon announcement"></i>
+                    <a id="btn-comprar-card-@Model.IdProduct" title="Avise-me" class="ui labeled button grey fluid avise-card avise-me-modal text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
                         Avise-me
                     </a>
                 }
                 else if (Session["EventList"] != null)
                 {
-                    <a id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="ui labeled icon button primary fluid add-event-list text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-                        <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i>
+                    <a id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="ui labeled button primary fluid add-event-list text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
                         Adicionar à Lista
                     </a>
                 }
                 else
                 {
-                    <a id="btn-comprar-card-@Model.IdProduct" title="Comprar" class="ui labeled icon button primary fluid btn-comprar-card text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-                        <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i>
+                    <a id="btn-comprar-card-@Model.IdProduct" title="Comprar" class="ui labeled button primary fluid btn-comprar-card text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
                         Comprar
                     </a>
                 }
@@ -153,29 +149,25 @@
                 <!-- Verificar se o produto é conjunto -->
                 @if (Model.HasConjunct)
                 {
-                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Comprar" class="ui labeled icon button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="Model.Name">
-                        <i id="btn-icon-card-Model.IdProduct" class="icon announcement"></i>
+                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Comprar" class="ui labeled button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="Model.Name">                        
                         Comprar
                     </a>
                 }
                 else if (Model.FlagExhausted || Model.Stock <= 0)
                 {
-                    <a id="btn-comprar-card-@Model.IdProduct" title="Avise-me" class="ui labeled icon button grey fluid avise-card avise-me-modal text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-                        <i id="btn-icon-card-@Model.IdProduct" class="icon announcement"></i>
+                    <a id="btn-comprar-card-@Model.IdProduct" title="Avise-me" class="ui labeled button grey fluid avise-card avise-me-modal text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">                        
                         Avise-me
                     </a>
                 }
                 else if (Session["EventList"] != null)
                 {
-                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="ui labeled icon button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-                        <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i>
+                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="ui labeled button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">                        
                         Adicionar à Lista
                     </a>
                 }
                 else
                 {
-                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="btn-comprar-card-@Model.IdProduct" title="Comprar" class="ui labeled icon button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-                        <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i>
+                    <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="btn-comprar-card-@Model.IdProduct" title="Comprar" class="ui labeled button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">                        
                         Comprar
                     </a>
                 }

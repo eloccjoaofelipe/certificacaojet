@@ -5,7 +5,10 @@
         position: relative;
         z-index: 4;
         border-top:0px !important;
-
+        img.content{
+            min-height: 270px;
+            object-fit: cover;
+        }
         .info {
             background-color: white;
             height: auto;
@@ -72,6 +75,13 @@
                 }
                 
                 .btnComprar {
+                    height: 36px;
+                    justify-content: center;
+                    align-items: center;
+                    background: $primary-color !important;
+                    &:hover{
+                        background: darken($primary-color,10) !important;
+                    }
                     @media screen and (min-width: $desktop-bp-min) {
                         display: none;
                     }
@@ -108,7 +118,17 @@
                     }
                 }
             }
-
+            .mobile-hide{
+                .button {
+                    height: 36px;
+                    justify-content: center;
+                    align-items: center;
+                    background: $primary-color !important;
+                    &:hover{
+                        background: darken($primary-color,10) !important;
+                    }
+                }
+            }
             .sku-options {
                 
                 color: #ffffff;
@@ -148,7 +168,7 @@
         .info {
 
             @media screen and (min-width: $desktop-bp-min) {
-            transform: translateY(-40px);
+                transform: translateY(-40px);
             }
 
 

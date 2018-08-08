@@ -10,11 +10,21 @@
       z-index: 10;
     }
   }
+  .button.cor{
+    border-radius: 50% !important;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+  }
+  .ui.label.filters{
+    background: $primary-color;
+    color: #fff;
+  }
   .ui.accordion {
     .title {
       font-weight: bold;
       font-size: 14px;
-      color: $primary-color;
+      color: #000;
       text-transform: uppercase;
       padding-left: 15px;
       box-shadow: inset 3px 0 0 #EEEEEE;
