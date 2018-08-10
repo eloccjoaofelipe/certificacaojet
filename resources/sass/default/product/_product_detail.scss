@@ -64,6 +64,17 @@ h6.codProduto {
 				@media screen and (max-width: $mobile-bp){
 					text-align: center;
 				}
+				#quantidade{
+					margin: 0 5px;
+					border: 1px solid rgba(34, 36, 38, 0.15) !important;
+				}
+				button.ui.icon.button{
+					border-radius: 50% !important;
+					padding: 0;
+					width: 34px;
+					height: 34px;
+					justify-content: center;
+				}
 			}
 			
 			.blocoPreco {
@@ -234,7 +245,9 @@ h6.codProduto {
 
 	&.cor {
 	  height: 35px;
-	  width: 35px;
+		width: 35px;
+		border-radius: 50% !important;
+		padding: 0 !important;
 	}
 
 	&.selecionado {
@@ -268,7 +281,18 @@ h6.codProduto {
   .produto {
 
 	&.detalhes {
-
+		#exibePartial{
+			.image{
+				.img{
+					border: 1px solid #EEEEEE;
+				}
+			}
+			.thumbnails{
+				.image{
+					border: 1px solid #EEEEEE;
+				}
+			}
+		}
 	  &.row {
 		padding-top: 0px !important;
 	  }
@@ -328,7 +352,34 @@ h6.codProduto {
 			}
 		}
 	}
-
+	.buy-together-items-wrapper{
+		display: flex;
+		flex-wrap: wrap;
+		.item.buy-together{
+      display: flex;
+			flex-direction: column;
+			width: 25%;
+			padding: 0 15px;
+			.image{
+				width: 100%;
+			}
+			.content{
+				margin-top: auto;
+				padding: 10px 15px;
+				.meta{
+					h4{
+						margin-top: 5px !important;
+					}
+				}
+			}
+			.extra{
+				text-align: center;
+				.button{
+					width: 100%;
+				}
+			}
+		}
+	}
 	a {
 		font-weight: bold;
 		font-size: 14px;

@@ -27,12 +27,24 @@
       color: #000;
       text-transform: uppercase;
       padding-left: 15px;
-      box-shadow: inset 3px 0 0 #EEEEEE;
-      margin-bottom: 10px;
+      box-shadow: inset 0px 0px 0 1px #EEEEEE;
+      border-radius: 7px;
+      margin-top: 5px;
+      // margin-bottom: 10px;
       &.active {
-        border-top: 3px solid #EEEEEE;
-        border-bottom: 3px solid #EEEEEE;
-        box-shadow:none;
+        border-radius: 7px 7px 0 0;
+        // border-top: 3px solid #EEEEEE;
+        // border-bottom: 3px solid #EEEEEE;
+        // box-shadow:none;
+        & + .content.active{
+          padding: 0.5em 15px 0.5em !important;
+        }
+      }
+      & + .content{
+        box-shadow: inset 0px 0px 0 1px #EEEEEE;
+        padding: 0 15px 0  !important;
+        border-radius: 0 0 7px 7px;
+        transition: padding 150ms ease;
       }
       .icon {
         float: right;

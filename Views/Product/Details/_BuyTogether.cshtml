@@ -72,110 +72,110 @@
                     </div>
 
                     <input type="hidden" value="" name="buy-together-skus" id="buy-together-skus" />
-
-                    @foreach (var item in Model.BuyTogether)
-                    {
-                        string variacaoSelecionada = string.Empty;
-
-                        if (item.SKUs != null && item.SKUs.Any())
+                    <div class="buy-together-items-wrapper">
+                        @foreach (var item in Model.BuyTogether)
                         {
-                            var skuPadraoByTogether = item.SKUs.FirstOrDefault(m => m.Standard == true) != null ? item.SKUs.FirstOrDefault(m => m.Standard == true) : item.SKUs.FirstOrDefault(m => m.Stock > 0);
-                            if (skuPadraoByTogether != null)
+                            string variacaoSelecionada = string.Empty;
+
+                            if (item.SKUs != null && item.SKUs.Any())
                             {
-                                if (item.AvailableReferences != null && item.AvailableReferences.Count > 0)
+                                var skuPadraoByTogether = item.SKUs.FirstOrDefault(m => m.Standard == true) != null ? item.SKUs.FirstOrDefault(m => m.Standard == true) : item.SKUs.FirstOrDefault(m => m.Stock > 0);
+                                if (skuPadraoByTogether != null)
                                 {
-                                    foreach (var referencias in item.AvailableReferences.OrderBy(o => o.OrdinationOfReferences).ToList())
+                                    if (item.AvailableReferences != null && item.AvailableReferences.Count > 0)
                                     {
-                                        foreach (var variacoes in referencias.Variations)
+                                        foreach (var referencias in item.AvailableReferences.OrderBy(o => o.OrdinationOfReferences).ToList())
                                         {
-                                            if (skuPadraoByTogether.Variations.FindAll(r => r.IdVariation == variacoes.IdVariation).Count > 0)
+                                            foreach (var variacoes in referencias.Variations)
                                             {
-                                                var referencia_selecionada = skuPadraoByTogether.Variations.FindAll(r => r.IdVariation == variacoes.IdVariation);
-                                                variacaoSelecionada += referencias.IdReference.ToString() + '-' + referencia_selecionada.FirstOrDefault().IdVariation.ToString() + ',';
+                                                if (skuPadraoByTogether.Variations.FindAll(r => r.IdVariation == variacoes.IdVariation).Count > 0)
+                                                {
+                                                    var referencia_selecionada = skuPadraoByTogether.Variations.FindAll(r => r.IdVariation == variacoes.IdVariation);
+                                                    variacaoSelecionada += referencias.IdReference.ToString() + '-' + referencia_selecionada.FirstOrDefault().IdVariation.ToString() + ',';
+                                                }
                                             }
                                         }
-                                    }
 
-                                    string character = variacaoSelecionada.Substring(variacaoSelecionada.Length - 1);
-                                    if (character == ",")
-                                    {
-                                        variacaoSelecionada = variacaoSelecionada.Remove(variacaoSelecionada.Length - 1);
+                                        string character = variacaoSelecionada.Substring(variacaoSelecionada.Length - 1);
+                                        if (character == ",")
+                                        {
+                                            variacaoSelecionada = variacaoSelecionada.Remove(variacaoSelecionada.Length - 1);
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        int total_variacoes = item.AvailableReferences != null ? item.AvailableReferences.Count() : 0;
+                            int total_variacoes = item.AvailableReferences != null ? item.AvailableReferences.Count() : 0;
 
-                        <div class="item buy-together" id="buy-together" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
-                            <div class="ui image small">
-                                <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)">
-                                    <img src="@item.ImageHome" alt=""  onerror="imgError(this)">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)" class="header">@item.Name</a>
-                                <div class="meta">
-                                    @if (@Model.Brand != null)
-                                    {
-                                        <span>@Model.Brand.Name</span>
-                                    }
-                                    else
-                                    {
-                                        <span></span>
-                                    }
-                                    @{
-                                        decimal preco_final = item.PricePromotion != null ? Convert.ToDecimal(item.PricePromotion) : item.Price;
-                                    }
-
-                                    @if (item.AvailableReferences == null || item.AvailableReferences.Count() == 0)
-                                    {
-                                        <h4 class="margin small top" id="@item.IdProduct-price-product-buy-together">@preco_final.ToString("C")</h4>
-                                    }
-                                    else
-                                    {
-                                        <h4 class="margin small top" id="@item.IdProduct-price-product-buy-together"></h4>
-                                    }
+                            <div class="item buy-together" id="buy-together" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
+                                <div class="ui image small">
+                                    <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)">
+                                        <img src="@item.ImageHome" alt=""  onerror="imgError(this)">
+                                    </a>
                                 </div>
-                                <div class="description" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
-                                    @if (@item.AvailableReferences != null)
-                                    {
-                                        @Html.Action("Variations", "Product", new { reference = @item.AvailableReferences, ListaSku = @item.SKUs })
-                                    }
+                                <div class="content">
+                                    <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)" class="header">@item.Name</a>
+                                    <div class="meta">
+                                        @if (@Model.Brand != null)
+                                        {
+                                            <span>@Model.Brand.Name</span>
+                                        }
+                                        else
+                                        {
+                                            <span></span>
+                                        }
+                                        @{
+                                            decimal preco_final = item.PricePromotion != null ? Convert.ToDecimal(item.PricePromotion) : item.Price;
+                                        }
+
+                                        @if (item.AvailableReferences == null || item.AvailableReferences.Count() == 0)
+                                        {
+                                            <h4 class="margin small top" id="@item.IdProduct-price-product-buy-together">@preco_final.ToString("C")</h4>
+                                        }
+                                        else
+                                        {
+                                            <h4 class="margin small top" id="@item.IdProduct-price-product-buy-together"></h4>
+                                        }
+                                    </div>
+                                    <div class="description" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
+                                        @if (@item.AvailableReferences != null)
+                                        {
+                                            @Html.Action("Variations", "Product", new { reference = @item.AvailableReferences, ListaSku = @item.SKUs })
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="extra">
-                                <button class="ui circular icon big toggle button compre junto primary" data-id="@item.IdProduct" data-variacoes="@total_variacoes" id="adicionar-compre-junto-@item.IdProduct">
-                                    <i class="plus icon"></i>
-                                </button>
-                            </div>
+                                <div class="extra">
+                                    <button class="ui circular icon big toggle button compre junto primary" data-id="@item.IdProduct" data-variacoes="@total_variacoes" id="adicionar-compre-junto-@item.IdProduct">
+                                        Adicionar
+                                    </button>
+                                </div>
 
 
-                            <!-- COMEÇO VARIÁVEIS PRODUTO - COMPRE JUNTO-->
+                                <!-- COMEÇO VARIÁVEIS PRODUTO - COMPRE JUNTO-->
 
 
-                            @{
-                                string ListaSKU = "";
+                                @{
+                                    string ListaSKU = "";
 
-                                if (item.SKUs != null)
-                                {
-                                    ListaSKU = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(item.SKUs);
-                                }
-                            }
-
-                            <input type="hidden" name="@item.IdProduct-buy-together-product-id" id="@item.IdProduct-buy-together-product-id" value="@item.IdProduct" class="buy-together-product-id" />
-                            <input type="hidden" name="@item.IdProduct-buy-together-sku" id="@item.IdProduct-buy-together-sku" value="" class="buy-together-sku" />
-                            <input type="hidden" name="@item.IdProduct-buy-together-lista-sku" id="@item.IdProduct-buy-together-lista-sku" value="@ListaSKU" class="compre-junto-sku" />
-                            <input type="hidden" name="@item.IdProduct-buy-together-preco" id="@item.IdProduct-buy-together-preco" value="@item.Price" class="compre-junto-preco" />
-                            <input type="hidden" name="@item.IdProduct-buy-together-preco-promocao" id="@item.IdProduct-buy-together-preco-promocao" value="@item.PricePromotion" class="compre-junto-preco-promocao" />
-                            <input type="hidden" name="@item.IdProduct-buy-together-total-variacoes" id="@item.IdProduct-buy-together-total-variacoes" value="@total_variacoes" class="compre-junto-total-varicao" />
-                            <input type="hidden" name="@item.IdProduct-buy-together-referencias-selecionadas" id="@item.IdProduct-buy-together-referencias-selecionadas" value="@variacaoSelecionada" class="compre-junto-variacao-selecionada" />
-                            <!-- FIM VARIÁVEIS PRODUTO - COMPRE JUNTO-->
-
-                        </div>
+                                    if (item.SKUs != null)
+                                    {
+                                        ListaSKU = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(item.SKUs);
+                                    }
                                 }
 
+                                <input type="hidden" name="@item.IdProduct-buy-together-product-id" id="@item.IdProduct-buy-together-product-id" value="@item.IdProduct" class="buy-together-product-id" />
+                                <input type="hidden" name="@item.IdProduct-buy-together-sku" id="@item.IdProduct-buy-together-sku" value="" class="buy-together-sku" />
+                                <input type="hidden" name="@item.IdProduct-buy-together-lista-sku" id="@item.IdProduct-buy-together-lista-sku" value="@ListaSKU" class="compre-junto-sku" />
+                                <input type="hidden" name="@item.IdProduct-buy-together-preco" id="@item.IdProduct-buy-together-preco" value="@item.Price" class="compre-junto-preco" />
+                                <input type="hidden" name="@item.IdProduct-buy-together-preco-promocao" id="@item.IdProduct-buy-together-preco-promocao" value="@item.PricePromotion" class="compre-junto-preco-promocao" />
+                                <input type="hidden" name="@item.IdProduct-buy-together-total-variacoes" id="@item.IdProduct-buy-together-total-variacoes" value="@total_variacoes" class="compre-junto-total-varicao" />
+                                <input type="hidden" name="@item.IdProduct-buy-together-referencias-selecionadas" id="@item.IdProduct-buy-together-referencias-selecionadas" value="@variacaoSelecionada" class="compre-junto-variacao-selecionada" />
+                                <!-- FIM VARIÁVEIS PRODUTO - COMPRE JUNTO-->
 
+                            </div>
+                                    }
+
+                    </div>
                 </div>
             </div>
             <div class="ui rail four wide computer column compre junto">

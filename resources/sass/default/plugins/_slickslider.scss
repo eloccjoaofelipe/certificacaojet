@@ -147,3 +147,31 @@
         }
     }
 }
+#RelatedProducts{
+    .slick-arrow{
+        background: $primary-color !important;
+        position: absolute;
+        top: 30%;
+        width: 40px;
+        background: #fe584a !important;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff !important;
+        border-radius: 50%;
+        border: 0;
+        opacity: 1;
+        box-shadow: 0 3px 5px rgba(#000,0.3) !important;
+        &.slick-prev{
+            left: 15px;
+        }
+        &.slick-next{
+            right: 15px;
+        }
+        &.slick-disabled{
+            opacity: 0.3;
+            cursor: default;
+        }
+    }
+}

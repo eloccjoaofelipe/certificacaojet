@@ -6,14 +6,15 @@ headlogo {
 ._header {
   background: rgb(255,255,255);
   margin-top: 0px;
-
   &.fixed{
     box-shadow: rgba(0,0,0,.3) 0px 0px 10px 0px;
     @media screen and (max-width: $mobile-bp) {
       box-shadow: none;
       border-bottom:1px solid #eee;
     }
-
+    &.ui.container.fluid{
+      width: 100% !important;
+    }
     .blocoBusca {
       top:90px;
     }
@@ -34,6 +35,12 @@ headlogo {
   }
 
   .searchcolumn {
+    .ui.icon.input input{
+      border-radius: 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
     .ui.icon.input > i.icon {
       opacity: initial;
     }
